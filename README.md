@@ -2,4 +2,4 @@
 # Date: Late Summer 2018
 # Project: Course Project - Project two from projects list
 # Class: Advanced Agile Software Development
-# Instructor: Chiemerie Buzhyason...
+# Instructor: Chiemerie Buzhyason
