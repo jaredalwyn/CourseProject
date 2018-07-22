@@ -1,4 +1,9 @@
-﻿using System;
+﻿//*******************************************
+// This is the Administration form.         *
+// Admins can add new courses, students,    *
+// and Instructors into the system.         *
+//*******************************************
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +25,36 @@ namespace CourseProject
         private void AdminForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Button to add new course into the system.
+        private void btnAddCourse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Button to add new student into the system.
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Button to add new Instructor into the system.
+        private void btnAddInstructor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Button to return to Main Form. 
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Button to Exit the program.
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
