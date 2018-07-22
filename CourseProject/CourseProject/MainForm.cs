@@ -1,4 +1,16 @@
-﻿using System;
+﻿// Created by Jared Alwyn and Eldon Edwards
+// Late Summer 2018
+// Course Project
+// Advanced Agile Software Development
+// Professor Buzhyason
+
+//*******************************************
+// This is the main, or "home page" form.   *
+// This form displays all the options that  *
+// A user can select from. This will open   *
+// other forms or close the program.        *
+//*******************************************
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

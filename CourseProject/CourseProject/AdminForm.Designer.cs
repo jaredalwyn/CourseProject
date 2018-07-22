@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "AdminForm";
-            this.Text = "AdminForm";
+            this.Text = "Administrator Form";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
 
