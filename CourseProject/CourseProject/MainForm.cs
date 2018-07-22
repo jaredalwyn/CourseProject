@@ -17,28 +17,31 @@ namespace CourseProject
             InitializeComponent();
         }
 
-        // Administration Button.
+        // Administration Button. Opens the Administration form.
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-
+            AdminForm adminForm = new AdminForm();
+            adminForm.ShowDialog();
         }
 
-        // Instructor Button.
+        // Instructor Button. Opens the Instructor form.
         private void btnInstructor_Click(object sender, EventArgs e)
         {
-
+            InstructorForm instructorForm = new InstructorForm();
+            instructorForm.ShowDialog();
         }
 
-        // Students Button.
+        // Students Button. Opens the Students form.
         private void btnStu_Click(object sender, EventArgs e)
         {
-
+            StudentForm studentForm = new StudentForm();
+            studentForm.ShowDialog();
         }
 
-        // Exit Button.
+        // Exit Button. Exits the program.
         private void btnExit_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }
