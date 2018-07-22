@@ -45,7 +45,8 @@ namespace CourseProject
         // Button to add new Instructor into the system.
         private void btnAddInstructor_Click(object sender, EventArgs e)
         {
-
+            AddInstructorForm addinstructorForm = new AddInstructorForm();
+            addinstructorForm.ShowDialog();
         }
 
         // Button to return to Main Form. 
