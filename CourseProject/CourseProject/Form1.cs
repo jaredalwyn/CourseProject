@@ -10,11 +10,35 @@ using System.Windows.Forms;
 
 namespace CourseProject
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        // Administration Button.
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Instructor Button.
+        private void btnInstructor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Students Button.
+        private void btnStu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Exit Button.
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
