@@ -105,6 +105,7 @@
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
             this.ResumeLayout(false);
             this.PerformLayout();

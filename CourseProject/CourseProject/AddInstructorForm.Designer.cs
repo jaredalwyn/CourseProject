@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.nameTextbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -47,6 +47,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enter Instructor Data";
             // 
+            // nameTextbox
+            // 
+            this.nameTextbox.Location = new System.Drawing.Point(182, 79);
+            this.nameTextbox.Name = "nameTextbox";
+            this.nameTextbox.Size = new System.Drawing.Size(249, 20);
+            this.nameTextbox.TabIndex = 1;
+            this.nameTextbox.TextChanged += new System.EventHandler(this.nameTextbox_TextChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -56,14 +64,6 @@
             this.label1.Size = new System.Drawing.Size(111, 75);
             this.label1.TabIndex = 0;
             this.label1.Text = "New \r\nInstructor\r\nName:";
-            // 
-            // nameTextbox
-            // 
-            this.nameTextbox.Location = new System.Drawing.Point(182, 79);
-            this.nameTextbox.Name = "nameTextbox";
-            this.nameTextbox.Size = new System.Drawing.Size(249, 20);
-            this.nameTextbox.TabIndex = 1;
-            this.nameTextbox.TextChanged += new System.EventHandler(this.nameTextbox_TextChanged);
             // 
             // btnAdd
             // 
@@ -96,6 +96,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddInstructorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add a Instructor";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

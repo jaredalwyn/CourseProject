@@ -113,6 +113,7 @@
             this.Controls.Add(this.btnAddCourse);
             this.Controls.Add(this.label1);
             this.Name = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrator Form";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
