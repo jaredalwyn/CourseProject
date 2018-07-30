@@ -37,13 +37,15 @@ namespace CourseProject
         // Button to register for course.
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
+            StudentEnrollForm studentEnrollForm = new StudentEnrollForm();
+            studentEnrollForm.ShowDialog();
         }
 
         // Button for student to view current courses registered for. 
         private void btnViewCourse_Click(object sender, EventArgs e)
         {
-
+            StudentViewCourseForm studentViewCourseForm = new StudentViewCourseForm();
+            studentViewCourseForm.ShowDialog();
         }
     }
 }

@@ -33,5 +33,12 @@ namespace CourseProject
         {
             Application.Exit();
         }
+
+        // Button that will open new form to view courses and update grades. 
+        private void btnViewCourses_Click(object sender, EventArgs e)
+        {
+            InstructorViewCourseForm instructorViewCourseForm = new InstructorViewCourseForm();
+            instructorViewCourseForm.ShowDialog();
+        }
     }
 }

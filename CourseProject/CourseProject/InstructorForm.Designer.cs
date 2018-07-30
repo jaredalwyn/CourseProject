@@ -75,6 +75,7 @@
             this.btnViewCourses.TabIndex = 1;
             this.btnViewCourses.Text = "View My Courses";
             this.btnViewCourses.UseVisualStyleBackColor = true;
+            this.btnViewCourses.Click += new System.EventHandler(this.btnViewCourses_Click);
             // 
             // InstructorForm
             // 
