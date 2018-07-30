@@ -21,5 +21,17 @@ namespace CourseProject
         {
 
         }
+
+        // Button to return to main form.
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Button that will exit program.
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

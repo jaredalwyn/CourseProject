@@ -74,7 +74,7 @@
             // 
             this.btnStu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnStu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStu.Location = new System.Drawing.Point(133, 291);
+            this.btnStu.Location = new System.Drawing.Point(133, 312);
             this.btnStu.Name = "btnStu";
             this.btnStu.Size = new System.Drawing.Size(156, 67);
             this.btnStu.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(511, 291);
+            this.btnExit.Location = new System.Drawing.Point(511, 312);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 67);
             this.btnExit.TabIndex = 4;
