@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.coursesComboBox = new System.Windows.Forms.ComboBox();
-            this.instructorIdTextBox = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
+            this.instructorIdTextBox = new System.Windows.Forms.TextBox();
+            this.coursesComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,17 +50,35 @@
             this.groupBox1.Size = new System.Drawing.Size(498, 177);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Instructor Data";
             // 
-            // label1
+            // btnFind
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(61, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Instructor ID:";
+            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.Location = new System.Drawing.Point(396, 41);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 2;
+            this.btnFind.Text = "&Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // instructorIdTextBox
+            // 
+            this.instructorIdTextBox.Location = new System.Drawing.Point(200, 45);
+            this.instructorIdTextBox.Name = "instructorIdTextBox";
+            this.instructorIdTextBox.Size = new System.Drawing.Size(153, 20);
+            this.instructorIdTextBox.TabIndex = 1;
+            // 
+            // coursesComboBox
+            // 
+            this.coursesComboBox.Enabled = false;
+            this.coursesComboBox.FormattingEnabled = true;
+            this.coursesComboBox.Location = new System.Drawing.Point(200, 118);
+            this.coursesComboBox.Name = "coursesComboBox";
+            this.coursesComboBox.Size = new System.Drawing.Size(271, 21);
+            this.coursesComboBox.TabIndex = 3;
+            this.coursesComboBox.SelectedIndexChanged += new System.EventHandler(this.coursesComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -72,31 +90,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Courses Taught: ";
             // 
-            // coursesComboBox
+            // label1
             // 
-            this.coursesComboBox.FormattingEnabled = true;
-            this.coursesComboBox.Location = new System.Drawing.Point(200, 118);
-            this.coursesComboBox.Name = "coursesComboBox";
-            this.coursesComboBox.Size = new System.Drawing.Size(271, 21);
-            this.coursesComboBox.TabIndex = 2;
-            // 
-            // instructorIdTextBox
-            // 
-            this.instructorIdTextBox.Location = new System.Drawing.Point(200, 45);
-            this.instructorIdTextBox.Name = "instructorIdTextBox";
-            this.instructorIdTextBox.Size = new System.Drawing.Size(153, 20);
-            this.instructorIdTextBox.TabIndex = 3;
-            // 
-            // btnFind
-            // 
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(396, 41);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 4;
-            this.btnFind.Text = "&Find";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(61, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Instructor ID:";
             // 
             // btnClose
             // 
@@ -104,7 +106,7 @@
             this.btnClose.Location = new System.Drawing.Point(374, 332);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(156, 67);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Cl&ose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
