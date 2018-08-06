@@ -1,8 +1,8 @@
-﻿// Created by Jared Alwyn
-// Late Summer 2018
-// Course Project
-// Advanced Agile Software Development
-// Professor Buzhyason
+﻿// Created by:  Jared Alwyn
+// Date:        Late Summer
+// Project:     Course Project
+// Class:       Advanced Agile Software Development
+// Instructor:  Chiemerie Buzhyason
 
 //*******************************************
 // This is the main, or "home page" form.   *
