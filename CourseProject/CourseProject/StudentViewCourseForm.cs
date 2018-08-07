@@ -55,7 +55,7 @@ namespace CourseProject
                 if (courseTable.Rows.Count < 1)
                 {
                     lblStudentName.Clear();
-                    lblStudentName.Text = "No Student Found";
+                    lblStudentName.Text = "Student is currently not enrolled.";
                 }
                 else
                 {

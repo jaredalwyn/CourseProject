@@ -21,9 +21,17 @@ namespace CourseProject
 {
     public partial class StudentEnrollForm : Form
     {
+        string connectionString;    // Declared string variable at the class level.
+        SqlConnection conn;         // SQLconnection variable.
         public StudentEnrollForm()
         {
             InitializeComponent();
+
+            // Assign value to the string vaiable.
+            connectionString =
+                ConfigurationManager.ConnectionStrings
+                ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
+                .ConnectionString;
         }
 
         // Form load event.
@@ -34,6 +42,32 @@ namespace CourseProject
         // Button that will search and find Student Id.
         private void btnFind_Click(object sender, EventArgs e)
         {
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+             ("SELECT courseId, courseName, student.studentId FROM course, student" +
+             " WHERE student.studentId = @studentId AND (@studentId != course.studentId OR course.studentId IS NULL) ", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            {
+                comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                DataTable courseTable = new DataTable();
+                adapter.Fill(courseTable);
+
+                // Checks to make sure there is data associated with instructor ID.
+                if (courseTable.Rows.Count < 1)
+                {
+                    courseComboBox.Enabled = false;
+                    courseComboBox.DataSource = null;
+                    MessageBox.Show("*** No student found. Please check student ID ***");
+                }
+                // If there is data, then display.
+                else
+                {
+                    courseComboBox.Enabled = true;
+                    courseComboBox.DisplayMember = "courseName";
+                    courseComboBox.ValueMember = "courseId";
+                    courseComboBox.DataSource = courseTable;
+                }
+            }
         }
 
         // Button that will enroll the student in a course.
