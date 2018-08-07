@@ -16,6 +16,7 @@ namespace CourseProject
     {
         string connectionString;    // Declared string variable at the class level.
         SqlConnection conn;         // SQLconnection variable.
+        BindingSource studentBindingSource = new BindingSource();
         public InstructorViewCourseForm()
         {
             InitializeComponent();
@@ -67,9 +68,37 @@ namespace CourseProject
         {
         }
 
-        // Combobox to show courses.
+        // Combobox to show courses. This will update the data grid view on change.
         private void coursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            studentDataGridView.DataSource = studentBindingSource;
+
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+                ("SELECT course.studentId, student.studentName, student.studentGrade FROM course" +
+                " LEFT JOIN student ON student.studentId = course.studentId" + "" +
+                " AND courseId = @courseId WHERE student.studentName IS NOT NULL", conn))
+                //("SELECT * FROM student s, course c WHERE s.studentId = c.studentId AND courseId = @courseId", conn))
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            {
+                comd.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
+                DataTable studentTable = new DataTable();
+                adapter.Fill(studentTable);
+                this.studentDataGridView.DataSource = studentTable;
+            }
+        }
+
+        // Button that will update current grades for student.
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Data grid view for students in the currently selected course.
+        private void studentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
