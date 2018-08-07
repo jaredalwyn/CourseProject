@@ -25,19 +25,16 @@ namespace CourseProject
         // Holds information for the course title. 
         private void courseTextbox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         // Holds information for the Semester Offered.
         private void SemesterTextbox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         // Button that will add course from text in courseText and SemesterText. 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
         }
 
         // Button that will close the form. 

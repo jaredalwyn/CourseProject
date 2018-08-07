@@ -34,7 +34,6 @@ namespace CourseProject
         {
             AdminForm adminForm = new AdminForm();
             adminForm.ShowDialog();
-            
         }
 
         // Instructor Button. Opens the Instructor form.

@@ -1,4 +1,11 @@
-﻿using System;
+﻿//*******************************************
+// This is the enroll form for students.    *
+// Students will enter their student ID and *
+// select the course they would like to     *
+// enroll in. An error will occur if course.*
+// is full.                                 *
+//*******************************************
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Collections.Generic;
@@ -22,19 +29,16 @@ namespace CourseProject
         // Form load event.
         private void StudentEnrollForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Button that will search and find Student Id.
         private void btnFind_Click(object sender, EventArgs e)
         {
-
         }
 
         // Button that will enroll the student in a course.
         private void btnEnroll_Click(object sender, EventArgs e)
         {
-
         }
 
         // Button that will close the current form. 

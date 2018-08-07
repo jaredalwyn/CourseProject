@@ -1,4 +1,11 @@
-﻿using System;
+﻿//***********************************************************
+// This is the student view course form. This form will     *
+// allow students to type in their student ID and generate  *
+// a list of the classes they are currently taking and      *
+// current grade recieved. Displays promp if student has    *
+// enough credits to graduate                               *
+//***********************************************************
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Collections.Generic;
@@ -17,8 +24,6 @@ namespace CourseProject
         string connectionString;    // Declared string variable at the class level.
         SqlConnection conn;         // SQLconnection variable.
         BindingSource studentBindingSource = new BindingSource();
-        int studentId;
-
         public StudentViewCourseForm()
         {
             InitializeComponent();
@@ -32,7 +37,6 @@ namespace CourseProject
         // Load event for the form. 
         private void StudentViewCourseForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Find button searches for student ID.
@@ -42,9 +46,6 @@ namespace CourseProject
             using (SqlCommand comd = new SqlCommand
                ("SELECT student.studentName, student.studentId, course.courseName, student.studentGrade FROM student, course" +
               " WHERE  student.studentId = @studentId AND student.studentId = course.studentId", conn))
-
-            //    ("SELECT studentId, studentName, studentGrade FROM student" +
-            //" WHERE  student.studentId = @studentId", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
@@ -59,15 +60,12 @@ namespace CourseProject
                 else
                 {
                     DataRow dr = courseTable.Rows[0];
-                    //  studentId = int.Parse(dr["studentId"].ToString());
                     lblStudentName.Text = dr["studentName"].ToString();
-
 
                     // Upadate Data grid view
                     studentDataGridView.DataSource = studentBindingSource;
                     this.studentDataGridView.DataSource = courseTable;
                 }
-
             }
         }
 

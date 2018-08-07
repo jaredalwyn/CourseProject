@@ -25,19 +25,16 @@ namespace CourseProject
         // Form load event.
         private void AddStudentForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Textbox where New Student name is entered into. 
         private void nameTextbox_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         // Button that adds the student information from the nameTextbox.
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
         }
 
         // Button that closes the form. 

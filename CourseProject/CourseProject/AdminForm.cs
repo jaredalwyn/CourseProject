@@ -1,5 +1,5 @@
 ﻿//*******************************************
-// This is the Administration form.         *
+// This is the main Administration form.    *
 // Admins can add new courses, students,    *
 // and Instructors into the system.         *
 //*******************************************
@@ -25,7 +25,6 @@ namespace CourseProject
         // Load event.
         private void AdminForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Button to add new course into the system.

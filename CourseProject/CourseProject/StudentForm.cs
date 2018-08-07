@@ -1,4 +1,10 @@
-﻿using System;
+﻿//*******************************************
+// This is the student form page.           *
+// The student will have multiple selection *
+// options from this page including         *
+// the option to return to the main form.   * 
+//*******************************************
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +23,9 @@ namespace CourseProject
             InitializeComponent();
         }
 
+        // Student form load event.
         private void StudentForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // This button will return to main form.

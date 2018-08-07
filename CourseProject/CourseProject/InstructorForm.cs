@@ -1,4 +1,9 @@
-﻿using System;
+﻿//***********************************************
+// This is the Main page for Instructors.       *
+// Instructors can further select other options *
+// from this page, or return to the main form.  *
+//***********************************************
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +22,9 @@ namespace CourseProject
             InitializeComponent();
         }
 
+        // Load event for the instructor form.
         private void InstructorForm_Load(object sender, EventArgs e)
         {
-
         }
 
         // Button to return to main form.
