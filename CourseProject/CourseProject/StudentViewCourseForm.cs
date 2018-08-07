@@ -16,6 +16,7 @@ namespace CourseProject
     {
         string connectionString;    // Declared string variable at the class level.
         SqlConnection conn;         // SQLconnection variable.
+        BindingSource studentBindingSource = new BindingSource();
         int studentId;
 
         public StudentViewCourseForm()
@@ -39,9 +40,11 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
+               ("SELECT student.studentName, student.studentId, course.courseName, student.studentGrade FROM student, course" +
+              " WHERE  student.studentId = @studentId AND student.studentId = course.studentId", conn))
 
-             ("SELECT studentId, studentName, studentGrade FROM student" +
-            " WHERE  student.studentId = @studentId", conn))
+            //    ("SELECT studentId, studentName, studentGrade FROM student" +
+            //" WHERE  student.studentId = @studentId", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
@@ -56,8 +59,13 @@ namespace CourseProject
                 else
                 {
                     DataRow dr = courseTable.Rows[0];
-                    studentId = int.Parse(dr["studentId"].ToString());
+                    //  studentId = int.Parse(dr["studentId"].ToString());
                     lblStudentName.Text = dr["studentName"].ToString();
+
+
+                    // Upadate Data grid view
+                    studentDataGridView.DataSource = studentBindingSource;
+                    this.studentDataGridView.DataSource = courseTable;
                 }
 
             }

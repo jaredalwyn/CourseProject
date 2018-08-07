@@ -113,6 +113,7 @@
             // 
             // studentDataGridView
             // 
+            this.studentDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.studentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentDataGridView.Location = new System.Drawing.Point(61, 225);
             this.studentDataGridView.Name = "studentDataGridView";
