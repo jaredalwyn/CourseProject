@@ -44,8 +44,7 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-             ("SELECT courseId, courseName, student.studentId FROM course, student" +
-             " WHERE student.studentId = @studentId AND (@studentId != course.studentId OR course.studentId IS NULL) ", conn))
+            ("SELECT courseName FROM course WHERE courseId IN (SELECT courseId FROM enrollment WHERE enrollment.studentId != @studentId)", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
@@ -64,7 +63,7 @@ namespace CourseProject
                 {
                     courseComboBox.Enabled = true;
                     courseComboBox.DisplayMember = "courseName";
-                    courseComboBox.ValueMember = "courseId";
+                    courseComboBox.ValueMember = "course.courseId";
                     courseComboBox.DataSource = courseTable;
                 }
             }

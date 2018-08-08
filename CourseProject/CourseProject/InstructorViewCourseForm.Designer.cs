@@ -38,6 +38,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.studentDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.instructorNameTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -45,6 +47,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.instructorNameTextBox);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnFind);
             this.groupBox1.Controls.Add(this.instructorIdTextBox);
             this.groupBox1.Controls.Add(this.coursesComboBox);
@@ -60,7 +64,7 @@
             // btnFind
             // 
             this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(433, 41);
+            this.btnFind.Location = new System.Drawing.Point(433, 32);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 2;
@@ -70,7 +74,7 @@
             // 
             // instructorIdTextBox
             // 
-            this.instructorIdTextBox.Location = new System.Drawing.Point(237, 45);
+            this.instructorIdTextBox.Location = new System.Drawing.Point(237, 32);
             this.instructorIdTextBox.Name = "instructorIdTextBox";
             this.instructorIdTextBox.Size = new System.Drawing.Size(153, 20);
             this.instructorIdTextBox.TabIndex = 1;
@@ -79,7 +83,7 @@
             // 
             this.coursesComboBox.Enabled = false;
             this.coursesComboBox.FormattingEnabled = true;
-            this.coursesComboBox.Location = new System.Drawing.Point(237, 118);
+            this.coursesComboBox.Location = new System.Drawing.Point(237, 130);
             this.coursesComboBox.Name = "coursesComboBox";
             this.coursesComboBox.Size = new System.Drawing.Size(271, 21);
             this.coursesComboBox.TabIndex = 3;
@@ -89,7 +93,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(57, 118);
+            this.label2.Location = new System.Drawing.Point(57, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 24);
             this.label2.TabIndex = 1;
@@ -99,7 +103,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(98, 42);
+            this.label1.Location = new System.Drawing.Point(98, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 24);
             this.label1.TabIndex = 0;
@@ -148,6 +152,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Student Data";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(64, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 24);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Instructor Name:";
+            // 
+            // instructorNameTextBox
+            // 
+            this.instructorNameTextBox.Enabled = false;
+            this.instructorNameTextBox.Location = new System.Drawing.Point(237, 83);
+            this.instructorNameTextBox.Name = "instructorNameTextBox";
+            this.instructorNameTextBox.Size = new System.Drawing.Size(271, 20);
+            this.instructorNameTextBox.TabIndex = 5;
+            // 
             // InstructorViewCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,5 +203,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridView studentDataGridView;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox instructorNameTextBox;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -42,8 +42,10 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-             ("SELECT courseId, courseName FROM course" +
-            " WHERE  course.instructorId = @instructorId", conn))
+                ("SELECT * FROM instructor i JOIN tEnrollment t ON i.instructorId = t.instructorId JOIN course c ON c.courseId = t.courseId" +
+                " AND i.instructorId = @instructorId", conn))
+            // ("SELECT course.courseId, course.courseName FROM course" +
+            //" WHERE  course.instructorId = @instructorId", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@instructorId", instructorIdTextBox.Text);
@@ -53,6 +55,9 @@ namespace CourseProject
                 // Checks to make sure there is data associated with instructor ID.
                 if (courseTable.Rows.Count < 1)
                 {
+                    instructorIdTextBox.Clear();
+                    instructorIdTextBox.Focus();
+                    instructorNameTextBox.Clear();
                     coursesComboBox.Enabled = false;
                     coursesComboBox.DataSource = null;
                     MessageBox.Show("*** No Instructor found. Please check Instructor ID ***");
@@ -60,6 +65,8 @@ namespace CourseProject
                 // If there is data, then display.
                 else
                 {
+                    DataRow dr = courseTable.Rows[0];
+                    instructorNameTextBox.Text = dr["instructorName"].ToString();
                     coursesComboBox.Enabled = true;
                     coursesComboBox.DisplayMember = "courseName";
                     coursesComboBox.ValueMember = "courseId";
@@ -85,16 +92,21 @@ namespace CourseProject
             studentDataGridView.DataSource = studentBindingSource;
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-                ("SELECT course.studentId, student.studentName, student.studentGrade FROM course" +
-                " LEFT JOIN student ON student.studentId = course.studentId" +
-                " AND courseId = @courseId WHERE student.studentName IS NOT NULL", conn))
-
+                ("SELECT student.studentId, studentName, studentGrade FROM student, enrollment" +
+                " WHERE student.studentId = enrollment.studentId AND enrollment.courseId = @courseId", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
-                comd.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
-                DataTable studentTable = new DataTable();
-                adapter.Fill(studentTable);
-                this.studentDataGridView.DataSource = studentTable;
+                try
+                {
+                    comd.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
+                    DataTable studentTable = new DataTable();
+                    adapter.Fill(studentTable);
+                    this.studentDataGridView.DataSource = studentTable;
+                }
+                catch (Exception)
+                {
+                    instructorIdTextBox.Clear();
+                }
             }
         }
 
