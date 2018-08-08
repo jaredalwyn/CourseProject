@@ -26,6 +26,7 @@ namespace CourseProject
         string connectionString;    // Declared string variable at the class level.
         SqlConnection conn;         // SQLconnection variable.
         BindingSource studentBindingSource = new BindingSource();
+        SqlDataAdapter adapter;
         public InstructorViewCourseForm()
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace CourseProject
                     instructorNameTextBox.Clear();
                     coursesComboBox.Enabled = false;
                     coursesComboBox.DataSource = null;
+                    btnUpdate.Enabled = false;
                     MessageBox.Show("*** No Instructor found. Please check Instructor ID ***");
                 }
                 // If there is data, then display.
@@ -89,30 +91,41 @@ namespace CourseProject
         // Combobox to show courses. This will update the data grid view on change.
         private void coursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             studentDataGridView.DataSource = studentBindingSource;
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ("SELECT student.studentId, studentName, studentGrade FROM student, enrollment" +
-                " WHERE student.studentId = enrollment.studentId AND enrollment.courseId = @courseId", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            adapter = new SqlDataAdapter("SELECT * FROM enrollment " +
+    " WHERE courseId = @courseId", connectionString);
+
+            try
             {
-                try
-                {
-                    comd.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
-                    DataTable studentTable = new DataTable();
-                    adapter.Fill(studentTable);
-                    this.studentDataGridView.DataSource = studentTable;
-                }
-                catch (Exception)
-                {
-                    instructorIdTextBox.Clear();
-                }
+                SqlCommandBuilder comdBuilder = new SqlCommandBuilder(adapter);
+                adapter.SelectCommand.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
+                DataTable studentTable = new DataTable();
+                adapter.Fill(studentTable);
+                studentBindingSource.DataSource = studentTable;
+
+                btnUpdate.Enabled = true;
+                this.studentDataGridView.DataSource = studentTable;
+            }
+            catch (Exception)
+            {
+                btnUpdate.Enabled = false;
+                instructorIdTextBox.Clear();
             }
         }
 
         // Button that will update current grades for student.
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                adapter.Update((DataTable)studentBindingSource.DataSource);
+                MessageBox.Show("Update successful.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Data could not be updated.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Data grid view for students in the currently selected course.
