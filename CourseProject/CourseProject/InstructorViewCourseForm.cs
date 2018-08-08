@@ -45,8 +45,6 @@ namespace CourseProject
             using (SqlCommand comd = new SqlCommand
                 ("SELECT * FROM instructor i JOIN tEnrollment t ON i.instructorId = t.instructorId JOIN course c ON c.courseId = t.courseId" +
                 " AND i.instructorId = @instructorId", conn))
-            // ("SELECT course.courseId, course.courseName FROM course" +
-            //" WHERE  course.instructorId = @instructorId", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@instructorId", instructorIdTextBox.Text);

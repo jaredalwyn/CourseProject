@@ -44,14 +44,15 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-            ("SELECT courseName FROM course WHERE courseId IN (SELECT courseId FROM enrollment WHERE enrollment.studentId != @studentId)", conn))
+            ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM enrollment e JOIN student s ON e.studentId = s.studentId AND s.studentId = @studentId)", conn))
+
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
                 DataTable courseTable = new DataTable();
                 adapter.Fill(courseTable);
 
-                // Checks to make sure there is data associated with instructor ID.
+                // Checks to make sure there is data associated with student ID.
                 if (courseTable.Rows.Count < 1)
                 {
                     courseComboBox.Enabled = false;
@@ -63,7 +64,7 @@ namespace CourseProject
                 {
                     courseComboBox.Enabled = true;
                     courseComboBox.DisplayMember = "courseName";
-                    courseComboBox.ValueMember = "course.courseId";
+                    courseComboBox.ValueMember = "courseId";
                     courseComboBox.DataSource = courseTable;
                 }
             }

@@ -4,9 +4,11 @@
 // and click add student.                   *
 //*******************************************
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,9 +19,16 @@ namespace CourseProject
 {
     public partial class AddStudentForm : Form
     {
+        string connectionString;    // Declared string variable at the class level.
+        SqlConnection conn;         // SQLconnection variable.
         public AddStudentForm()
         {
             InitializeComponent();
+            InitializeComponent();
+            connectionString =
+    ConfigurationManager.ConnectionStrings
+    ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
+    .ConnectionString;
         }
 
         // Form load event.
@@ -35,6 +44,19 @@ namespace CourseProject
         // Button that adds the student information from the nameTextbox.
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+
+            ("INSTERT INTO student (studentName) " +
+            "VALUES (@studentName)", conn))
+            {
+                conn.Open();
+                comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
+                comd.ExecuteScalar();
+                MessageBox.Show("Student Added.");
+                nameTextbox.Clear();
+                nameTextbox.Focus();
+            }
         }
 
         // Button that closes the form. 
