@@ -47,7 +47,7 @@ namespace CourseProject
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
 
-            ("INSTERT INTO student (studentName) " +
+            ("INSERT INTO student (studentName) " +
             "VALUES (@studentName)", conn))
             {
                 conn.Open();

@@ -55,6 +55,7 @@ namespace CourseProject
                 // Checks to make sure there is data associated with student ID.
                 if (courseTable.Rows.Count < 1)
                 {
+                    btnEnroll.Enabled = false;
                     courseComboBox.Enabled = false;
                     courseComboBox.DataSource = null;
                     MessageBox.Show("*** No student found. Please check student ID ***");
@@ -62,6 +63,7 @@ namespace CourseProject
                 // If there is data, then display.
                 else
                 {
+                    btnEnroll.Enabled = true;
                     courseComboBox.Enabled = true;
                     courseComboBox.DisplayMember = "courseName";
                     courseComboBox.ValueMember = "courseId";
@@ -73,6 +75,19 @@ namespace CourseProject
         // Button that will enroll the student in a course.
         private void btnEnroll_Click(object sender, EventArgs e)
         {
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+
+            ("INSERT INTO enrollment (courseId, studentId) " +
+            "VALUES (@courseId,  @studentId)", conn))
+            {
+                conn.Open();
+                comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
+                comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                comd.ExecuteScalar();
+                MessageBox.Show("Course Added.");
+                studentIdTextBox.Clear();
+            }
         }
 
         // Button that will close the current form. 
