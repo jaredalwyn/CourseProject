@@ -46,7 +46,6 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-
             ("INSERT INTO student (studentName) " +
             "VALUES (@studentName)", conn))
             {
@@ -54,8 +53,8 @@ namespace CourseProject
                 comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
                 comd.ExecuteScalar();
                 MessageBox.Show("Student Added.");
-                nameTextbox.Clear();
-                nameTextbox.Focus();
+                //nameTextbox.Clear();
+                //nameTextbox.Focus();
             }
         }
 

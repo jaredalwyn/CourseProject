@@ -81,12 +81,20 @@ namespace CourseProject
             ("INSERT INTO enrollment (courseId, studentId) " +
             "VALUES (@courseId,  @studentId)", conn))
             {
-                conn.Open();
-                comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
-                comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
-                comd.ExecuteScalar();
-                MessageBox.Show("Course Added.");
-                studentIdTextBox.Clear();
+                try
+                {
+                    conn.Open();
+                    comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
+                    comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                    comd.ExecuteScalar();
+                    MessageBox.Show("Course Added.");
+                    studentIdTextBox.Clear();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("*** A student is not associated with that ID. Please check student ID ***");
+                    studentIdTextBox.Clear();
+                }
             }
         }
 
