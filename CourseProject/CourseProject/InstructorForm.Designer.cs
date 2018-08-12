@@ -51,7 +51,7 @@
             this.btnReturn.Location = new System.Drawing.Point(187, 310);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(156, 67);
-            this.btnReturn.TabIndex = 2;
+            this.btnReturn.TabIndex = 3;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -62,7 +62,7 @@
             this.btnExit.Location = new System.Drawing.Point(458, 310);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 67);
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -73,7 +73,7 @@
             this.btnViewCourses.Location = new System.Drawing.Point(458, 138);
             this.btnViewCourses.Name = "btnViewCourses";
             this.btnViewCourses.Size = new System.Drawing.Size(156, 67);
-            this.btnViewCourses.TabIndex = 1;
+            this.btnViewCourses.TabIndex = 2;
             this.btnViewCourses.Text = "View My Courses";
             this.btnViewCourses.UseVisualStyleBackColor = true;
             this.btnViewCourses.Click += new System.EventHandler(this.btnViewCourses_Click);
@@ -84,7 +84,7 @@
             this.btnEnroll.Location = new System.Drawing.Point(187, 138);
             this.btnEnroll.Name = "btnEnroll";
             this.btnEnroll.Size = new System.Drawing.Size(156, 67);
-            this.btnEnroll.TabIndex = 4;
+            this.btnEnroll.TabIndex = 1;
             this.btnEnroll.Text = "Enroll In Course";
             this.btnEnroll.UseVisualStyleBackColor = true;
             this.btnEnroll.Click += new System.EventHandler(this.btnEnroll_Click);

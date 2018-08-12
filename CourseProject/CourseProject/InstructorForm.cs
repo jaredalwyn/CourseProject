@@ -49,6 +49,8 @@ namespace CourseProject
         // Button that will allow Instructor to enroll in course. 
         private void btnEnroll_Click(object sender, EventArgs e)
         {
+            InstructorEnrollForm instructorEnrollForm = new InstructorEnrollForm();
+            instructorEnrollForm.ShowDialog();
         }
     }
 }

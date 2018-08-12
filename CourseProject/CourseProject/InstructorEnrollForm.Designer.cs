@@ -78,7 +78,7 @@
             this.instructorTextBox.Location = new System.Drawing.Point(227, 58);
             this.instructorTextBox.Name = "instructorTextBox";
             this.instructorTextBox.Size = new System.Drawing.Size(162, 20);
-            this.instructorTextBox.TabIndex = 2;
+            this.instructorTextBox.TabIndex = 1;
             this.instructorTextBox.TextChanged += new System.EventHandler(this.instructorTextBox_TextChanged);
             // 
             // courseComboBox
@@ -97,17 +97,19 @@
             this.btnFind.Location = new System.Drawing.Point(440, 55);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 4;
+            this.btnFind.TabIndex = 2;
             this.btnFind.Text = "&Find";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnEnroll
             // 
+            this.btnEnroll.Enabled = false;
             this.btnEnroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnroll.Location = new System.Drawing.Point(76, 345);
             this.btnEnroll.Name = "btnEnroll";
             this.btnEnroll.Size = new System.Drawing.Size(156, 67);
-            this.btnEnroll.TabIndex = 1;
+            this.btnEnroll.TabIndex = 4;
             this.btnEnroll.Text = "&Enroll";
             this.btnEnroll.UseVisualStyleBackColor = true;
             this.btnEnroll.Click += new System.EventHandler(this.btnEnroll_Click);
@@ -118,7 +120,7 @@
             this.btnClose.Location = new System.Drawing.Point(398, 345);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(156, 67);
-            this.btnClose.TabIndex = 2;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
