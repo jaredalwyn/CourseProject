@@ -17,7 +17,6 @@ using System.Windows.Forms;
 
 namespace CourseProject
 {
-
     public partial class AddCourseForm : Form
     {
         string connectionString;    // Declared string variable at the class level.
@@ -25,10 +24,12 @@ namespace CourseProject
         public AddCourseForm()
         {
             InitializeComponent();
+
+            // Assign value to the string variable.
             connectionString =
-    ConfigurationManager.ConnectionStrings
-    ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
-    .ConnectionString;
+                ConfigurationManager.ConnectionStrings
+                ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
+                .ConnectionString;
         }
 
         // Holds information for the course title. 
@@ -46,8 +47,7 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-
-            ("INSTERT INTO course (courseName, courseSemester) " +
+            ("INSERT INTO course (courseName, courseSemester) " +
             "VALUES (@courseName, @courseSemester)", conn))
             {
                 conn.Open();
