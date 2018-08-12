@@ -60,7 +60,8 @@ namespace CourseProject
                     lblStudentName.Clear();
                     studentIdTextBox.Clear();
                     studentIdTextBox.Focus();
-                    studentDataGridView = null;
+                    courseTable.Clear();
+                    studentDataGridView.DataSource = courseTable;
                 }
 
                 // Displays data if student information is found. 

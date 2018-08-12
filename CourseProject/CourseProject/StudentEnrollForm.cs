@@ -57,7 +57,7 @@ namespace CourseProject
                     btnEnroll.Enabled = false;
                     courseComboBox.Enabled = false;
                     courseComboBox.DataSource = null;
-                    MessageBox.Show("*** No student found.***\nPlease check student ID and try again.", "Error");
+                    MessageBox.Show("*** No student found OR no courses available.***\nPlease check student ID and try again.", "Error");
                 }
 
                 // If there is data, then display.
