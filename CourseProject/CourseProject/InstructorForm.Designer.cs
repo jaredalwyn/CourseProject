@@ -32,6 +32,7 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnViewCourses = new System.Windows.Forms.Button();
+            this.btnEnroll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +70,7 @@
             // btnViewCourses
             // 
             this.btnViewCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewCourses.Location = new System.Drawing.Point(187, 138);
+            this.btnViewCourses.Location = new System.Drawing.Point(458, 138);
             this.btnViewCourses.Name = "btnViewCourses";
             this.btnViewCourses.Size = new System.Drawing.Size(156, 67);
             this.btnViewCourses.TabIndex = 1;
@@ -77,11 +78,23 @@
             this.btnViewCourses.UseVisualStyleBackColor = true;
             this.btnViewCourses.Click += new System.EventHandler(this.btnViewCourses_Click);
             // 
+            // btnEnroll
+            // 
+            this.btnEnroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnroll.Location = new System.Drawing.Point(187, 138);
+            this.btnEnroll.Name = "btnEnroll";
+            this.btnEnroll.Size = new System.Drawing.Size(156, 67);
+            this.btnEnroll.TabIndex = 4;
+            this.btnEnroll.Text = "Enroll In Course";
+            this.btnEnroll.UseVisualStyleBackColor = true;
+            this.btnEnroll.Click += new System.EventHandler(this.btnEnroll_Click);
+            // 
             // InstructorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEnroll);
             this.Controls.Add(this.btnViewCourses);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnReturn);
@@ -101,5 +114,6 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnViewCourses;
+        private System.Windows.Forms.Button btnEnroll;
     }
 }

@@ -60,7 +60,7 @@ namespace CourseProject
                     coursesComboBox.Enabled = false;
                     coursesComboBox.DataSource = null;
                     btnUpdate.Enabled = false;
-                    MessageBox.Show("*** No Instructor found. Please check Instructor ID ***");
+                    MessageBox.Show("***Instructor not enrolled in any course. Please check Instructor ID ***");
                 }
                 // If there is data, then display.
                 else
