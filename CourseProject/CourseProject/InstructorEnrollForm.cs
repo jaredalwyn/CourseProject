@@ -54,7 +54,6 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-
             ("INSERT INTO tEnrollment (courseId, instructorId) " +
             "VALUES (@courseId,  @instructorId)", conn))
             {
@@ -64,13 +63,19 @@ namespace CourseProject
                     comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
                     comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
                     comd.ExecuteScalar();
-                    MessageBox.Show("Course Added.");
+                    MessageBox.Show("Course Added.", "Success!");
+
+                    // Clears text box, and resets combo box.
                     instructorTextBox.Clear();
                     courseComboBox.SelectedIndex = -1;
                 }
+
+                // Catches error if the instructor ID does not exist. 
                 catch (Exception)
                 {
                     MessageBox.Show("*** No instructor associated with ID.*** \nPlease check instructor ID.", "Error");
+
+                    // clears text box, and resets combo box.
                     instructorTextBox.Clear();
                     courseComboBox.SelectedIndex = -1;
                 }
@@ -89,7 +94,6 @@ namespace CourseProject
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
             ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM tEnrollment e JOIN instructor i ON e.instructorId = i.instructorId)", conn))
-
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
@@ -101,7 +105,9 @@ namespace CourseProject
                 {
                     btnEnroll.Enabled = false;
                     courseComboBox.Enabled = false;
-                    courseComboBox.DataSource = null;
+                    courseComboBox.SelectedItem = -1;
+                    instructorTextBox.Clear();
+                    btnClose.Focus();
                     MessageBox.Show("*** No courses available to register. *** \nAsk Administrator to add new course.", "Error");
                 }
                 // If there is data, then display.
@@ -117,3 +123,5 @@ namespace CourseProject
         }
     }
 }
+
+// Notes: Add funtion to handle reset of page if error occurs. 

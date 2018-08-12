@@ -53,7 +53,9 @@ namespace CourseProject
                 conn.Open();
                 comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
                 comd.ExecuteScalar();
-                MessageBox.Show("Student Added.");
+                MessageBox.Show("Student Added.", "Success!");
+
+                // Clears current text boxes.
                 nameTextbox.Clear();
                 nameTextbox.Focus();
             }

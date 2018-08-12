@@ -24,11 +24,12 @@ namespace CourseProject
         public AddInstructorForm()
         {
             InitializeComponent();
-            InitializeComponent();
+
+            // Assign value to the string variable.
             connectionString =
-    ConfigurationManager.ConnectionStrings
-    ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
-    .ConnectionString;
+                ConfigurationManager.ConnectionStrings
+                ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
+                .ConnectionString;
         }
 
         // Holds the name of the instructor. 
@@ -41,14 +42,15 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-
             ("INSERT INTO instructor (instructorName) " +
             "VALUES (@instructorName)", conn))
             {
                 conn.Open();
                 comd.Parameters.AddWithValue("@instructorName", nameTextbox.Text);
                 comd.ExecuteScalar();
-                MessageBox.Show("Instructor Added.");
+                MessageBox.Show("Instructor Added.", "Success!");
+
+                // Clears the current text boxes.
                 nameTextbox.Clear();
                 nameTextbox.Focus();
             }

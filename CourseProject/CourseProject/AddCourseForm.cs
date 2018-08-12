@@ -54,7 +54,9 @@ namespace CourseProject
                 comd.Parameters.AddWithValue("@courseName", courseTextbox.Text);
                 comd.Parameters.AddWithValue("@courseSemester", SemesterTextbox.Text);
                 comd.ExecuteScalar();
-                MessageBox.Show("Course Added.");
+                MessageBox.Show("Course Added.", "Success!");
+
+                // Clears current text boxes.
                 courseTextbox.Clear();
                 SemesterTextbox.Clear();
                 courseTextbox.Focus();

@@ -58,10 +58,11 @@ namespace CourseProject
                     instructorIdTextBox.Focus();
                     instructorNameTextBox.Clear();
                     coursesComboBox.Enabled = false;
-                    coursesComboBox.DataSource = null;
+                    coursesComboBox.SelectedIndex = -1;
                     btnUpdate.Enabled = false;
-                    MessageBox.Show("***Instructor not enrolled in any course. Please check Instructor ID ***");
+                    MessageBox.Show("***Instructor is not enrolled in a course.***\nPlease check Instructor ID.", "Error");
                 }
+
                 // If there is data, then display.
                 else
                 {
@@ -89,11 +90,9 @@ namespace CourseProject
         // Combobox to show courses. This will update the data grid view on change.
         private void coursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             studentDataGridView.DataSource = studentBindingSource;
             adapter = new SqlDataAdapter("SELECT * FROM enrollment " +
-    " WHERE courseId = @courseId", connectionString);
-
+            " WHERE courseId = @courseId", connectionString);
             try
             {
                 SqlCommandBuilder comdBuilder = new SqlCommandBuilder(adapter);
@@ -109,6 +108,7 @@ namespace CourseProject
             {
                 btnUpdate.Enabled = false;
                 instructorIdTextBox.Clear();
+                instructorIdTextBox.Focus();
             }
         }
 
@@ -118,11 +118,13 @@ namespace CourseProject
             try
             {
                 adapter.Update((DataTable)studentBindingSource.DataSource);
-                MessageBox.Show("Update successful.");
+                MessageBox.Show("Update successful.", "Success!");
             }
-            catch (Exception ex)
+
+            // Will display an error if data could not be updated. Could be from invalid value.
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Data could not be updated.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("***Data could not be updated.***\n Please look at value and try again.", "Error");
             }
         }
 

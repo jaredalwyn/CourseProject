@@ -27,6 +27,7 @@ namespace CourseProject
         public StudentViewCourseForm()
         {
             InitializeComponent();
+
             // Assign value to the string vaiable.
             connectionString =
                 ConfigurationManager.ConnectionStrings
@@ -52,11 +53,17 @@ namespace CourseProject
                 DataTable courseTable = new DataTable();
                 adapter.Fill(courseTable);
 
+                // Displays error message if student either isn't enrolled in a course, or doesn't exist in the database. 
                 if (courseTable.Rows.Count < 1)
                 {
+                    MessageBox.Show("*** Student is currently not enrolled in any course.***\nPlease check the student ID and try again.", "Error");
                     lblStudentName.Clear();
-                    lblStudentName.Text = "Student is currently not enrolled.";
+                    studentIdTextBox.Clear();
+                    studentIdTextBox.Focus();
+                    studentDataGridView = null;
                 }
+
+                // Displays data if student information is found. 
                 else
                 {
                     DataRow dr = courseTable.Rows[0];

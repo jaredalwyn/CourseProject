@@ -45,7 +45,6 @@ namespace CourseProject
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
             ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM enrollment e JOIN student s ON e.studentId = s.studentId AND s.studentId = @studentId)", conn))
-
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
@@ -58,8 +57,9 @@ namespace CourseProject
                     btnEnroll.Enabled = false;
                     courseComboBox.Enabled = false;
                     courseComboBox.DataSource = null;
-                    MessageBox.Show("*** No student found. Please check student ID ***");
+                    MessageBox.Show("*** No student found.***\nPlease check student ID and try again.", "Error");
                 }
+
                 // If there is data, then display.
                 else
                 {
@@ -77,7 +77,6 @@ namespace CourseProject
         {
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-
             ("INSERT INTO enrollment (courseId, studentId) " +
             "VALUES (@courseId,  @studentId)", conn))
             {
@@ -87,13 +86,18 @@ namespace CourseProject
                     comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
                     comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
                     comd.ExecuteScalar();
-                    MessageBox.Show("Course Added.");
+                    MessageBox.Show("Course Added.", "Success!");
                     studentIdTextBox.Clear();
+                    studentIdTextBox.Focus();
+                    courseComboBox.SelectedIndex = -1;
                 }
+
+                // Displays error if the student ID is not in the database. 
                 catch(Exception)
                 {
-                    MessageBox.Show("*** A student is not associated with that ID. Please check student ID ***");
+                    MessageBox.Show("*** A student is not associated with that ID.***\nPlease check student ID and try again.", "Error");
                     studentIdTextBox.Clear();
+                    courseComboBox.SelectedIndex = -1;
                 }
             }
         }
