@@ -24,11 +24,12 @@ namespace CourseProject
         public AddStudentForm()
         {
             InitializeComponent();
-            InitializeComponent();
+
+            // Assign value to the string variable.
             connectionString =
-    ConfigurationManager.ConnectionStrings
-    ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
-    .ConnectionString;
+                ConfigurationManager.ConnectionStrings
+                ["CourseProject.Properties.Settings.TinyCollegeDBConnectionString"]
+                 .ConnectionString;
         }
 
         // Form load event.
@@ -53,8 +54,8 @@ namespace CourseProject
                 comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
                 comd.ExecuteScalar();
                 MessageBox.Show("Student Added.");
-                //nameTextbox.Clear();
-                //nameTextbox.Focus();
+                nameTextbox.Clear();
+                nameTextbox.Focus();
             }
         }
 

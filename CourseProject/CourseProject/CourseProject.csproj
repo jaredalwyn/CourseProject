@@ -108,6 +108,9 @@
     <Compile Include="StudentViewCourseForm.Designer.cs">
       <DependentUpon>StudentViewCourseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TinyCollegeDBDataSet.cs">
+      <DependentUpon>TinyCollegeDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TinyCollegeDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
