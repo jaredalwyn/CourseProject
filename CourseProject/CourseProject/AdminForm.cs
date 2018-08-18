@@ -85,13 +85,15 @@ namespace CourseProject
         // Opens the About Form.
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
 
         // Opens the works cited form. 
         private void worksCitedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            WorksCitedForm worksCitedForm = new WorksCitedForm();
+            worksCitedForm.ShowDialog();
         }
 
         // Handles the event in the file menu when exit is clicked.
@@ -103,7 +105,6 @@ namespace CourseProject
         // Label Click
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

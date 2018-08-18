@@ -94,7 +94,7 @@ namespace CourseProject
                 {
                     studentDataGridView.DataSource = studentBindingSource;
                     adapter = new SqlDataAdapter
-                        ("SELECT enrollmentId, enrollment.studentId, studentGrade FROM enrollment" +
+                        ("SELECT enrollmentId, enrollment.studentId AS 'Student ID', studentGrade AS 'Student Grade' FROM enrollment" +
                          " WHERE enrollment.courseId = @courseId", connectionString);
                     SqlCommandBuilder comdBuilder = new SqlCommandBuilder(adapter);
                     adapter.SelectCommand.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);

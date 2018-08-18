@@ -96,6 +96,12 @@ namespace CourseProject
             StudentForm studentForm = new StudentForm();
             studentForm.ShowDialog();
         }
+
+        // Main form load event.
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            btnAdmin.Focus();
+        }
     }
 }
 

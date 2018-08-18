@@ -53,5 +53,45 @@ namespace CourseProject
             StudentViewCourseForm studentViewCourseForm = new StudentViewCourseForm();
             studentViewCourseForm.ShowDialog();
         }
+
+        // Opens the about page. 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        // Opens the works cited page. 
+        private void worksCitedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WorksCitedForm worksCitedForm = new WorksCitedForm();
+            worksCitedForm.ShowDialog();
+        }
+
+        // Closes the program
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Opens the Tiny College home page.
+        private void tinyCollegeHomePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Opens the administrator page.
+        private void administratorPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm();
+            adminForm.ShowDialog();
+        }
+
+        // Opens the instructor page. 
+        private void instructorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InstructorForm instructorForm = new InstructorForm();
+            instructorForm.ShowDialog();
+        }
     }
 }

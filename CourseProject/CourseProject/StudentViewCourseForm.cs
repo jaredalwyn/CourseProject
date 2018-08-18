@@ -49,7 +49,8 @@ namespace CourseProject
             {
                 using (conn = new SqlConnection(connectionString))
                 using (SqlCommand comd = new SqlCommand
-                    ("SELECT studentName, courseName, studentGrade FROM student JOIN enrollment ON student.studentId = enrollment.studentId " +
+                    ("SELECT studentName, courseName AS 'Course Name', studentGrade AS 'Student Grade'" +
+                    " FROM student JOIN enrollment ON student.studentId = enrollment.studentId " +
                     " JOIN course ON course.courseId = enrollment.courseId WHERE student.studentId = @studentId", conn))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
                 {
@@ -63,7 +64,7 @@ namespace CourseProject
                         resetForm();
                         courseTable.Clear();
                         studentDataGridView.DataSource = courseTable;
-                        MessageBox.Show("*** Student is currently not enrolled in any course.***\nPlease check the student ID and try again.", "Error");                       
+                        MessageBox.Show("*** Student is currently not enrolled in any course.***\nPlease check the student ID and try again.", "Error");
                     }
 
                     // Displays data if student information is found. 
@@ -75,6 +76,7 @@ namespace CourseProject
                         // Upadate Data grid view
                         studentDataGridView.DataSource = studentBindingSource;
                         studentDataGridView.DataSource = courseTable;
+                        studentDataGridView.Columns[0].Visible = false;
                     }
                 }
             }
