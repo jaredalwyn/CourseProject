@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstructorEnrollForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.instructorTextBox = new System.Windows.Forms.TextBox();
-            this.courseComboBox = new System.Windows.Forms.ComboBox();
             this.btnFind = new System.Windows.Forms.Button();
+            this.courseComboBox = new System.Windows.Forms.ComboBox();
+            this.instructorTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnEnroll = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -53,33 +54,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Enrollment Data";
             // 
-            // label1
+            // btnFind
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(87, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Instructor ID:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(49, 150);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Select A Course:";
-            // 
-            // instructorTextBox
-            // 
-            this.instructorTextBox.Location = new System.Drawing.Point(227, 58);
-            this.instructorTextBox.Name = "instructorTextBox";
-            this.instructorTextBox.Size = new System.Drawing.Size(162, 20);
-            this.instructorTextBox.TabIndex = 1;
-            this.instructorTextBox.TextChanged += new System.EventHandler(this.instructorTextBox_TextChanged);
+            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFind.Location = new System.Drawing.Point(440, 55);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 2;
+            this.btnFind.Text = "&Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // courseComboBox
             // 
@@ -91,16 +75,33 @@
             this.courseComboBox.TabIndex = 3;
             this.courseComboBox.SelectedIndexChanged += new System.EventHandler(this.courseComboBox_SelectedIndexChanged);
             // 
-            // btnFind
+            // instructorTextBox
             // 
-            this.btnFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Location = new System.Drawing.Point(440, 55);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 2;
-            this.btnFind.Text = "&Find";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.instructorTextBox.Location = new System.Drawing.Point(227, 58);
+            this.instructorTextBox.Name = "instructorTextBox";
+            this.instructorTextBox.Size = new System.Drawing.Size(162, 20);
+            this.instructorTextBox.TabIndex = 1;
+            this.instructorTextBox.TextChanged += new System.EventHandler(this.instructorTextBox_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(49, 150);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Select A Course:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(87, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Instructor ID:";
             // 
             // btnEnroll
             // 
@@ -133,9 +134,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEnroll);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InstructorEnrollForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InstructorEnrollForm";
+            this.Text = "Instructor- Enroll In A Course";
             this.Load += new System.EventHandler(this.InstructorEnrollForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

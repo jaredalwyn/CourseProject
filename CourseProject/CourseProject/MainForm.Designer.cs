@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnInstructor = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 34);
+            this.label1.Location = new System.Drawing.Point(30, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(676, 57);
             this.label1.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             this.btnInstructor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInstructor.Location = new System.Drawing.Point(511, 141);
+            this.btnInstructor.Location = new System.Drawing.Point(422, 141);
             this.btnInstructor.Name = "btnInstructor";
             this.btnInstructor.Size = new System.Drawing.Size(156, 67);
             this.btnInstructor.TabIndex = 2;
@@ -86,7 +87,7 @@
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(511, 312);
+            this.btnExit.Location = new System.Drawing.Point(422, 312);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 67);
             this.btnExit.TabIndex = 4;
@@ -98,15 +99,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(736, 450);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnStu);
             this.Controls.Add(this.btnInstructor);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main Form";
+            this.Text = "Tiny College Home Page";
             this.ResumeLayout(false);
             this.PerformLayout();
 

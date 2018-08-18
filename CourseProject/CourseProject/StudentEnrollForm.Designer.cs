@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentEnrollForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.courseComboBox = new System.Windows.Forms.ComboBox();
@@ -131,9 +132,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEnroll);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentEnrollForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StudentEnrollForm";
+            this.Text = "Students- Enroll In A Course";
             this.Load += new System.EventHandler(this.StudentEnrollForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

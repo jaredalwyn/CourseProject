@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCourseForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SemesterTextbox = new System.Windows.Forms.TextBox();
             this.courseTextbox = new System.Windows.Forms.TextBox();
@@ -90,9 +91,9 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(70, 262);
+            this.btnAdd.Location = new System.Drawing.Point(85, 262);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(156, 67);
+            this.btnAdd.Size = new System.Drawing.Size(130, 51);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add Course";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -101,9 +102,9 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(379, 262);
+            this.btnClose.Location = new System.Drawing.Point(394, 262);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(156, 67);
+            this.btnClose.Size = new System.Drawing.Size(125, 51);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -117,9 +118,10 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddCourseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add a Course";
+            this.Text = "Admin- Add a Course";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstructorViewCourseForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.instructorNameTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnFind = new System.Windows.Forms.Button();
             this.instructorIdTextBox = new System.Windows.Forms.TextBox();
             this.coursesComboBox = new System.Windows.Forms.ComboBox();
@@ -38,8 +41,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.studentDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.instructorNameTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -60,6 +61,24 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Instructor Data";
+            // 
+            // instructorNameTextBox
+            // 
+            this.instructorNameTextBox.Enabled = false;
+            this.instructorNameTextBox.Location = new System.Drawing.Point(237, 83);
+            this.instructorNameTextBox.Name = "instructorNameTextBox";
+            this.instructorNameTextBox.Size = new System.Drawing.Size(271, 20);
+            this.instructorNameTextBox.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(64, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 24);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Instructor Name:";
             // 
             // btnFind
             // 
@@ -152,24 +171,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Student Data";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(64, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 24);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Instructor Name:";
-            // 
-            // instructorNameTextBox
-            // 
-            this.instructorNameTextBox.Enabled = false;
-            this.instructorNameTextBox.Location = new System.Drawing.Point(237, 83);
-            this.instructorNameTextBox.Name = "instructorNameTextBox";
-            this.instructorNameTextBox.Size = new System.Drawing.Size(271, 20);
-            this.instructorNameTextBox.TabIndex = 5;
-            // 
             // InstructorViewCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,9 +180,10 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InstructorViewCourseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Instructor View Course Form";
+            this.Text = "Instructor- View Courses";
             this.Load += new System.EventHandler(this.InstructorViewCourseForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

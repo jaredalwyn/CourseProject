@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddCourse = new System.Windows.Forms.Button();
             this.btnAddStudent = new System.Windows.Forms.Button();
@@ -40,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(254, 34);
+            this.label1.Location = new System.Drawing.Point(223, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 57);
             this.label1.TabIndex = 0;
@@ -49,7 +50,7 @@
             // btnAddCourse
             // 
             this.btnAddCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCourse.Location = new System.Drawing.Point(171, 128);
+            this.btnAddCourse.Location = new System.Drawing.Point(139, 118);
             this.btnAddCourse.Name = "btnAddCourse";
             this.btnAddCourse.Size = new System.Drawing.Size(156, 67);
             this.btnAddCourse.TabIndex = 1;
@@ -60,7 +61,7 @@
             // btnAddStudent
             // 
             this.btnAddStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddStudent.Location = new System.Drawing.Point(473, 128);
+            this.btnAddStudent.Location = new System.Drawing.Point(441, 118);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(156, 67);
             this.btnAddStudent.TabIndex = 2;
@@ -71,7 +72,7 @@
             // btnAddInstructor
             // 
             this.btnAddInstructor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInstructor.Location = new System.Drawing.Point(171, 247);
+            this.btnAddInstructor.Location = new System.Drawing.Point(139, 247);
             this.btnAddInstructor.Name = "btnAddInstructor";
             this.btnAddInstructor.Size = new System.Drawing.Size(156, 67);
             this.btnAddInstructor.TabIndex = 3;
@@ -82,7 +83,7 @@
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReturn.Location = new System.Drawing.Point(473, 247);
+            this.btnReturn.Location = new System.Drawing.Point(441, 247);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(156, 67);
             this.btnReturn.TabIndex = 4;
@@ -93,7 +94,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(320, 348);
+            this.btnExit.Location = new System.Drawing.Point(290, 341);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 67);
             this.btnExit.TabIndex = 5;
@@ -105,16 +106,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(736, 450);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnAddInstructor);
             this.Controls.Add(this.btnAddStudent);
             this.Controls.Add(this.btnAddCourse);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administrator Form";
+            this.Text = "Admin- Main Form";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
