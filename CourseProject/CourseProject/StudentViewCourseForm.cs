@@ -43,37 +43,44 @@ namespace CourseProject
         // Find button searches for student ID.
         private void btnFind_Click(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ("SELECT studentName, courseName, studentGrade FROM student JOIN enrollment ON student.studentId = enrollment.studentId " +
-                " JOIN course ON course.courseId = enrollment.courseId WHERE student.studentId = @studentId", conn))              
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+
+            // Try catch to handle any exceptions.
+            try
             {
-                comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
-                DataTable courseTable = new DataTable();
-                adapter.Fill(courseTable);
-
-                // Displays error message if student either isn't enrolled in a course, or doesn't exist in the database. 
-                if (courseTable.Rows.Count < 1)
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                    ("SELECT studentName, courseName, studentGrade FROM student JOIN enrollment ON student.studentId = enrollment.studentId " +
+                    " JOIN course ON course.courseId = enrollment.courseId WHERE student.studentId = @studentId", conn))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
                 {
-                    MessageBox.Show("*** Student is currently not enrolled in any course.***\nPlease check the student ID and try again.", "Error");
-                    lblStudentName.Clear();
-                    studentIdTextBox.Clear();
-                    studentIdTextBox.Focus();
-                    courseTable.Clear();
-                    studentDataGridView.DataSource = courseTable;
-                }
+                    comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                    DataTable courseTable = new DataTable();
+                    adapter.Fill(courseTable);
 
-                // Displays data if student information is found. 
-                else
-                {
-                    DataRow dr = courseTable.Rows[0];
-                    lblStudentName.Text = dr["studentName"].ToString();
+                    // Displays error message if student either isn't enrolled in a course, or doesn't exist in the database. 
+                    if (courseTable.Rows.Count < 1)
+                    {
+                        resetForm();
+                        courseTable.Clear();
+                        studentDataGridView.DataSource = courseTable;
+                        MessageBox.Show("*** Student is currently not enrolled in any course.***\nPlease check the student ID and try again.", "Error");                       
+                    }
 
-                    // Upadate Data grid view
-                    studentDataGridView.DataSource = studentBindingSource;
-                    this.studentDataGridView.DataSource = courseTable;
+                    // Displays data if student information is found. 
+                    else
+                    {
+                        DataRow dr = courseTable.Rows[0];
+                        lblStudentName.Text = dr["studentName"].ToString();
+
+                        // Upadate Data grid view
+                        studentDataGridView.DataSource = studentBindingSource;
+                        studentDataGridView.DataSource = courseTable;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -81,6 +88,16 @@ namespace CourseProject
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //*******************************************
+        // Method that will clear form.             *
+        //*******************************************
+        public void resetForm()
+        {
+            lblStudentName.Clear();
+            studentIdTextBox.Clear();
+            studentIdTextBox.Focus();
         }
     }
 }

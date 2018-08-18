@@ -52,65 +52,61 @@ namespace CourseProject
         // Button that will enroll the instructor into the selected course. 
         private void btnEnroll_Click(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-            ("INSERT INTO tEnrollment (courseId, instructorId) " +
-            "VALUES (@courseId,  @instructorId)", conn))
+
+            // Try catch to handle exceptions.
+            try
             {
-                try
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                ("UPDATE course SET instructorId = @instructorId WHERE courseId = @courseId", conn))
                 {
+
                     conn.Open();
                     comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
                     comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
                     comd.ExecuteScalar();
                     MessageBox.Show("Course Added.", "Success!");
-
-                    // Clears text box, and resets combo box.
-                    instructorTextBox.Clear();
-                    courseComboBox.SelectedIndex = -1;
+                    resetForm();
                 }
-
-                // Catches error if the instructor ID does not exist. 
-                catch (Exception)
-                {
-                    MessageBox.Show("*** No instructor associated with ID.*** \nPlease check instructor ID.", "Error");
-
-                    // clears text box, and resets combo box.
-                    instructorTextBox.Clear();
-                    courseComboBox.SelectedIndex = -1;
-                }
+            }
+            // Catches error if the instructor ID does not exist. 
+            catch (Exception)
+            {
+                resetForm();
+                MessageBox.Show("*** No instructor associated with ID.*** \nPlease check instructor ID.", "Error");
             }
         }
 
-        // Button that will close this form. 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+    // Button that will close this form. 
+    private void btnClose_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
 
-        // Button that will search for the instructor ID and return courses available to combobox. 
-        private void btnFind_Click(object sender, EventArgs e)
+    // Button that will search for the instructor ID and return courses available to combobox. 
+    private void btnFind_Click(object sender, EventArgs e)
+    {
+
+        // Try catch to handle any thrown exeptions.
+        try
         {
+
             using (conn = new SqlConnection(connectionString))
             using (SqlCommand comd = new SqlCommand
-            ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM tEnrollment e JOIN instructor i ON e.instructorId = i.instructorId)", conn))
+            ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM course c JOIN instructor i ON c.instructorId = i.instructorId)", conn))
             using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
             {
                 comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
                 DataTable courseTable = new DataTable();
                 adapter.Fill(courseTable);
 
-                // Checks to make sure there is data associated with student ID.
+                // Makes sure there are courses available for an instructor to enroll in. 
                 if (courseTable.Rows.Count < 1)
                 {
-                    btnEnroll.Enabled = false;
-                    courseComboBox.Enabled = false;
-                    courseComboBox.SelectedItem = -1;
-                    instructorTextBox.Clear();
+                    resetForm();
                     btnClose.Focus();
                     MessageBox.Show("*** No courses available to register. *** \nAsk Administrator to add new course.", "Error");
                 }
-                // If there is data, then display.
                 else
                 {
                     btnEnroll.Enabled = true;
@@ -121,7 +117,22 @@ namespace CourseProject
                 }
             }
         }
+        catch (Exception ex)
+        {
+            resetForm();
+            MessageBox.Show(ex.Message);
+        }
+    }
+
+    //*******************************************
+    // Method that will clear form.             *
+    //*******************************************
+    public void resetForm()
+    {
+        btnEnroll.Enabled = false;
+        instructorTextBox.Clear();
+        courseComboBox.SelectedIndex = -1;
+        courseComboBox.Enabled = false;
     }
 }
-
-// Notes: Add funtion to handle reset of page if error occurs. 
+}

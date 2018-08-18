@@ -58,7 +58,7 @@ namespace CourseProject
     }
 }
 
-// Notes: Administator assigns course availability. 
+// Notes: Administator assigns course availability. **
 // Classes each have a limted number of seats
 // Classes have credits that are applied to students. 
 // Student that have reached credit limit recieve a message they have graduated. 

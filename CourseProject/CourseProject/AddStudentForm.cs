@@ -45,19 +45,28 @@ namespace CourseProject
         // Button that adds the student information from the nameTextbox.
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-            ("INSERT INTO student (studentName) " +
-            "VALUES (@studentName)", conn))
-            {
-                conn.Open();
-                comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
-                comd.ExecuteScalar();
-                MessageBox.Show("Student Added.", "Success!");
 
-                // Clears current text boxes.
-                nameTextbox.Clear();
-                nameTextbox.Focus();
+            // Try catch to handle exceptions. 
+            try
+            {
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                ("INSERT INTO student (studentName) " +
+                "VALUES (@studentName)", conn))
+                {
+                    conn.Open();
+                    comd.Parameters.AddWithValue("@studentName", nameTextbox.Text);
+                    comd.ExecuteScalar();
+                    MessageBox.Show("Student Added.", "Success!");
+
+                    // Clears current text boxes.
+                    nameTextbox.Clear();
+                    nameTextbox.Focus();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

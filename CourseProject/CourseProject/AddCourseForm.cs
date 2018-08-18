@@ -45,21 +45,30 @@ namespace CourseProject
         // Button that will add course from text in courseText and SemesterText. 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-            ("INSERT INTO course (courseName, courseSemester) " +
-            "VALUES (@courseName, @courseSemester)", conn))
-            {
-                conn.Open();
-                comd.Parameters.AddWithValue("@courseName", courseTextbox.Text);
-                comd.Parameters.AddWithValue("@courseSemester", SemesterTextbox.Text);
-                comd.ExecuteScalar();
-                MessageBox.Show("Course Added.", "Success!");
 
-                // Clears current text boxes.
-                courseTextbox.Clear();
-                SemesterTextbox.Clear();
-                courseTextbox.Focus();
+            // Try catch to handle exceptions. 
+            try
+            {
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                ("INSERT INTO course (courseName, courseSemester) " +
+                "VALUES (@courseName, @courseSemester)", conn))
+                {
+                    conn.Open();
+                    comd.Parameters.AddWithValue("@courseName", courseTextbox.Text);
+                    comd.Parameters.AddWithValue("@courseSemester", SemesterTextbox.Text);
+                    comd.ExecuteScalar();
+                    MessageBox.Show("Course Added.", "Success!");
+
+                    // Clears current text boxes.
+                    courseTextbox.Clear();
+                    SemesterTextbox.Clear();
+                    courseTextbox.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

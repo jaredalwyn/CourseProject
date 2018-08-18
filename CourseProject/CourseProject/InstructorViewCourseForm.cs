@@ -41,31 +41,21 @@ namespace CourseProject
         // This button will search for Instructor ID and display courses in combobox.
         private void btnFind_Click(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ("SELECT * FROM instructor i JOIN tEnrollment t ON i.instructorId = t.instructorId JOIN course c ON c.courseId = t.courseId" +
-                " AND i.instructorId = @instructorId", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+
+            // Try catch to display any errors when searching for instructor ID.
+            try
             {
-                comd.Parameters.AddWithValue("@instructorId", instructorIdTextBox.Text);
-                DataTable courseTable = new DataTable();
-                adapter.Fill(courseTable);
-
-                // Checks to make sure there is data associated with instructor ID.
-                if (courseTable.Rows.Count < 1)
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                ("SELECT courseName, courseId, instructorName from course c" +
+                " JOIN instructor i ON c.instructorId = i.instructorId" +
+                " AND i.instructorId = @instructorId", conn))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
                 {
-                    instructorIdTextBox.Clear();
-                    instructorIdTextBox.Focus();
-                    instructorNameTextBox.Clear();
-                    coursesComboBox.Enabled = false;
-                    coursesComboBox.SelectedIndex = -1;
-                    btnUpdate.Enabled = false;
-                    MessageBox.Show("***Instructor is not enrolled in a course.***\nPlease check Instructor ID.", "Error");
-                }
+                    comd.Parameters.AddWithValue("@instructorId", instructorIdTextBox.Text);
+                    DataTable courseTable = new DataTable();
+                    adapter.Fill(courseTable);
 
-                // If there is data, then display.
-                else
-                {
                     DataRow dr = courseTable.Rows[0];
                     instructorNameTextBox.Text = dr["instructorName"].ToString();
                     coursesComboBox.Enabled = true;
@@ -73,6 +63,11 @@ namespace CourseProject
                     coursesComboBox.ValueMember = "courseId";
                     coursesComboBox.DataSource = courseTable;
                 }
+            }
+            catch (Exception)
+            {
+                resetForm();
+                MessageBox.Show("***Instructor is not enrolled in a course.***\nPlease check Instructor ID.", "Error");
             }
         }
 
@@ -90,33 +85,42 @@ namespace CourseProject
         // Combobox to show courses. This will update the data grid view on change.
         private void coursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            studentDataGridView.DataSource = studentBindingSource;
-            adapter = new SqlDataAdapter("SELECT * FROM enrollment " +
-            " WHERE courseId = @courseId", connectionString);
-            try
+            // Uses an If statement to make sure there wasn't an error in the Instuctor ID textbox. (Takes away double error).
+            if (coursesComboBox.SelectedIndex != -1)
             {
-                SqlCommandBuilder comdBuilder = new SqlCommandBuilder(adapter);
-                adapter.SelectCommand.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
-                DataTable studentTable = new DataTable();
-                adapter.Fill(studentTable);
-                studentBindingSource.DataSource = studentTable;
 
-                btnUpdate.Enabled = true;
-                this.studentDataGridView.DataSource = studentTable;
-            }
-            catch (Exception)
-            {
-                btnUpdate.Enabled = false;
-                instructorIdTextBox.Clear();
-                instructorIdTextBox.Focus();
+                // Try catch to display any possible errors. 
+                try
+                {
+                    studentDataGridView.DataSource = studentBindingSource;
+                    adapter = new SqlDataAdapter
+                        ("SELECT enrollmentId, enrollment.studentId, studentGrade FROM enrollment" +
+                         " WHERE enrollment.courseId = @courseId", connectionString);
+                    SqlCommandBuilder comdBuilder = new SqlCommandBuilder(adapter);
+                    adapter.SelectCommand.Parameters.AddWithValue("@courseId", coursesComboBox.SelectedValue);
+                    DataTable studentTable = new DataTable();
+                    adapter.Fill(studentTable);
+                    studentBindingSource.DataSource = studentTable;
+                    studentDataGridView.DataSource = studentTable;
+                    btnUpdate.Enabled = true;
+                    studentDataGridView.Columns[0].Visible = false;
+                }
+                catch (Exception ex)
+                {
+                    resetForm();
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
         // Button that will update current grades for student.
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
+            // Try catch to display update error.
             try
             {
+                // Update the datasource.
                 adapter.Update((DataTable)studentBindingSource.DataSource);
                 MessageBox.Show("Update successful.", "Success!");
             }
@@ -131,6 +135,19 @@ namespace CourseProject
         // Data grid view for students in the currently selected course.
         private void studentDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        //*******************************************
+        // Method that will clear form.             *
+        //*******************************************
+        public void resetForm()
+        {
+            instructorIdTextBox.Clear();
+            instructorIdTextBox.Focus();
+            instructorNameTextBox.Clear();
+            coursesComboBox.Enabled = false;
+            coursesComboBox.SelectedIndex = -1;
+            btnUpdate.Enabled = false;
         }
     }
 }
