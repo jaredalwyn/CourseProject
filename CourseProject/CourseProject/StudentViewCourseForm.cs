@@ -47,6 +47,7 @@ namespace CourseProject
             // Try catch to handle any exceptions.
             try
             {
+                checkCredits();
                 using (conn = new SqlConnection(connectionString))
                 using (SqlCommand comd = new SqlCommand
                     ("SELECT studentName, courseName AS 'Course Name', studentGrade AS 'Student Grade'" +
@@ -77,6 +78,8 @@ namespace CourseProject
                         studentDataGridView.DataSource = studentBindingSource;
                         studentDataGridView.DataSource = courseTable;
                         studentDataGridView.Columns[0].Visible = false;
+
+                        // checkCredits();
                     }
                 }
             }
@@ -100,6 +103,33 @@ namespace CourseProject
             lblStudentName.Clear();
             studentIdTextBox.Clear();
             studentIdTextBox.Focus();
+        }
+
+        //*******************************************
+        // Method that will check student credits   *
+        // and display message if student has met   *
+        // graduation requirements.                 *
+        //*******************************************
+        public void checkCredits()
+        {
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+                ("SELECT studentId, studentCredit FROM student" +
+                " WHERE studentCredit >= 120 AND studentId = @studentId", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            {
+                comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                DataTable creditTable = new DataTable();
+                adapter.Fill(creditTable);
+
+                if (creditTable.Rows.Count < 1)
+                {
+                }
+                else
+                {
+                    MessageBox.Show("Congratulations, you have graduated from Tiny College!", "Congrats!");
+                }
+            }
         }
     }
 }

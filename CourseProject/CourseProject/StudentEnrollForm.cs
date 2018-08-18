@@ -85,17 +85,31 @@ namespace CourseProject
         {
             try
             {
-                using (conn = new SqlConnection(connectionString))
-                using (SqlCommand comd = new SqlCommand
-                ("INSERT INTO enrollment (courseId, studentId) " +
-                "VALUES (@courseId,  @studentId)", conn))
+                bool max;                   // Bool that will method value determining if a course is full.
+                max = checkEnrollment();    // Bool max will get the value from checkEnrollment method. 
+
+                // If statement will only run if course is not full.
+                if (max == false)
                 {
-                    conn.Open();
-                    comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
-                    comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
-                    comd.ExecuteScalar();
-                    MessageBox.Show("Course Added.", "Success!");
+                    using (conn = new SqlConnection(connectionString))
+                    using (SqlCommand comd = new SqlCommand
+                    ("INSERT INTO enrollment (courseId, studentId) " +
+                    "VALUES (@courseId,  @studentId)", conn))
+                    {
+                        conn.Open();
+                        comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
+                        comd.Parameters.AddWithValue("@studentId", studentIdTextBox.Text);
+                        comd.ExecuteScalar();
+                        MessageBox.Show("Course Added.", "Success!");
+                        resetForm();
+                    }
+                }
+
+                // If course is full.
+                else
+                {
                     resetForm();
+                    MessageBox.Show("*** Sorry, the course is currently full. ***", "Error");
                 }
             }
 
@@ -123,6 +137,42 @@ namespace CourseProject
             courseComboBox.Enabled = false;
             studentIdTextBox.Clear();
             studentIdTextBox.Focus();
+        }
+
+        //*******************************************
+        // Method that will check if a course has   *
+        // reached the enrollment limit. Returns a  *
+        // bool value.                              *
+        //*******************************************
+        public bool checkEnrollment()
+        {
+            bool maxReached;    // Bool that's used in determining if a course is full. 
+            using (conn = new SqlConnection(connectionString))
+            using (SqlCommand comd = new SqlCommand
+            ("SELECT COUNT(DISTINCT studentId) FROM enrollment" +
+            " WHERE courseId = @courseId" +
+            " GROUP BY courseMax" +
+            " HAVING COUNT(DISTINCT studentId) <= courseMax ", conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            {
+                comd.Parameters.AddWithValue("@courseId", courseComboBox.SelectedValue);
+                DataTable countTable = new DataTable();
+                adapter.Fill(countTable);
+
+                // If course is full, return true. 
+                if (countTable.Rows.Count < 1)
+                {
+                    maxReached = true;
+                    return maxReached;
+                }
+
+                // Else course is not full. 
+                else
+                {
+                    maxReached = false;
+                    return maxReached;
+                }
+            }
         }
     }
 }
