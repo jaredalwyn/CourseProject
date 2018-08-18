@@ -59,5 +59,51 @@ namespace CourseProject
         {
             Application.Exit();
         }
+
+        // Opens the main home page form. 
+        private void tinyCollegeHomePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Opens the Instructor main page.
+        private void instructorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InstructorForm instructorForm = new InstructorForm();
+            instructorForm.ShowDialog();
+            this.Close();
+        }
+
+        // Opens the Student main page. 
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudentForm studentForm = new StudentForm();
+            studentForm.ShowDialog();
+            this.Close();
+        }
+
+        // Opens the About Form.
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Opens the works cited form. 
+        private void worksCitedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Handles the event in the file menu when exit is clicked.
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Label Click
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

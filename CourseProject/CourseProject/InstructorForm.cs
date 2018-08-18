@@ -52,5 +52,10 @@ namespace CourseProject
             InstructorEnrollForm instructorEnrollForm = new InstructorEnrollForm();
             instructorEnrollForm.ShowDialog();
         }
+
+        private void formsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -53,7 +53,48 @@ namespace CourseProject
         // Exit Button. Exits the program.
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
+        }
+
+        // Handles the event in the file menu when exit is clicked.
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Opens the About Form.
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        // Opens the works cited form. 
+        private void worksCitedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WorksCitedForm worksCitedForm = new WorksCitedForm();
+            worksCitedForm.ShowDialog();
+        }
+
+        // File Menu to open the Administration main form
+        private void aministratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminForm adminForm = new AdminForm();
+            adminForm.ShowDialog();
+        }
+
+        // File menu to open the Instructor main form. 
+        private void instructorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InstructorForm instructorForm = new InstructorForm();
+            instructorForm.ShowDialog();
+        }
+
+        // File menu to open the Student main form. 
+        private void studentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudentForm studentForm = new StudentForm();
+            studentForm.ShowDialog();
         }
     }
 }
