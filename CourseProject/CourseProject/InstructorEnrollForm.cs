@@ -7,14 +7,8 @@
 //*******************************************
 using System;
 using System.Configuration;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject
@@ -77,62 +71,61 @@ namespace CourseProject
             }
         }
 
-    // Button that will close this form. 
-    private void btnClose_Click(object sender, EventArgs e)
-    {
-        this.Close();
-    }
+        // Button that will close this form. 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-    // Button that will search for the instructor ID and return courses available to combobox. 
-    private void btnFind_Click(object sender, EventArgs e)
-    {
-
-        // Try catch to handle any thrown exeptions.
-        try
+        // Button that will search for the instructor ID and return courses available to combobox. 
+        private void btnFind_Click(object sender, EventArgs e)
         {
 
-            using (conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-            ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM course c JOIN instructor i ON c.instructorId = i.instructorId)", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+            // Try catch to handle any thrown exeptions.
+            try
             {
-                comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
-                DataTable courseTable = new DataTable();
-                adapter.Fill(courseTable);
+                using (conn = new SqlConnection(connectionString))
+                using (SqlCommand comd = new SqlCommand
+                ("SELECT * FROM course WHERE courseId NOT IN (SELECT courseId FROM course c JOIN instructor i ON c.instructorId = i.instructorId)", conn))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
+                {
+                    comd.Parameters.AddWithValue("@instructorId", instructorTextBox.Text);
+                    DataTable courseTable = new DataTable();
+                    adapter.Fill(courseTable);
 
-                // Makes sure there are courses available for an instructor to enroll in. 
-                if (courseTable.Rows.Count < 1)
-                {
-                    resetForm();
-                    btnClose.Focus();
-                    MessageBox.Show("*** No courses available to register. *** \nAsk Administrator to add new course.", "Error");
-                }
-                else
-                {
-                    btnEnroll.Enabled = true;
-                    courseComboBox.Enabled = true;
-                    courseComboBox.DisplayMember = "courseName";
-                    courseComboBox.ValueMember = "courseId";
-                    courseComboBox.DataSource = courseTable;
+                    // Makes sure there are courses available for an instructor to enroll in. 
+                    if (courseTable.Rows.Count < 1)
+                    {
+                        resetForm();
+                        btnClose.Focus();
+                        MessageBox.Show("*** No courses available to register. *** \nAsk Administrator to add new course.", "Error");
+                    }
+                    else
+                    {
+                        btnEnroll.Enabled = true;
+                        courseComboBox.Enabled = true;
+                        courseComboBox.DisplayMember = "courseName";
+                        courseComboBox.ValueMember = "courseId";
+                        courseComboBox.DataSource = courseTable;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                resetForm();
+                MessageBox.Show(ex.Message);
+            }
         }
-        catch (Exception ex)
-        {
-            resetForm();
-            MessageBox.Show(ex.Message);
-        }
-    }
 
-    //*******************************************
-    // Method that will clear form.             *
-    //*******************************************
-    public void resetForm()
-    {
-        btnEnroll.Enabled = false;
-        instructorTextBox.Clear();
-        courseComboBox.SelectedIndex = -1;
-        courseComboBox.Enabled = false;
+        //*******************************************
+        // Method that will clear form.             *
+        //*******************************************
+        public void resetForm()
+        {
+            btnEnroll.Enabled = false;
+            instructorTextBox.Clear();
+            courseComboBox.SelectedIndex = -1;
+            courseComboBox.Enabled = false;
+        }
     }
-}
 }
